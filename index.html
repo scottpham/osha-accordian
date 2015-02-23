@@ -57,9 +57,18 @@
 </head>
 
 
-<body ng-app="customDirectives">
+<body ng-app="customDirectives" ng-controller="CustomDirectivesController">
 	<div ng-controller="CustomDirectivesController">
 		<div custom-collapse ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"=""></div>
+	
+	<button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage == 0" ng-click="collapseData.currentPage=collapseData.currentPage - 1" >
+        Previous
+    </button>
+    {{collapseData.currentPage + 1}}/5
+    <button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage >= collapseData.data.length/collapseData.pageSize" ng-click="collapseData.currentPage=collapseData.currentPage+1">
+        Next
+    </button>
+    {{pageSize}}
 	</div>
 	
 	

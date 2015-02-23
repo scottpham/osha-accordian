@@ -39,6 +39,15 @@ customDirectives.directive('customCollapse', function(){
 
 var customComponents = angular.module('customComponents', ['customDirectives']);
 
+// pagination filter
+customDirectives.filter('startFrom', function(){
+  return function(input, start){
+    start = +start;
+    return input.slice(start);
+  }
+});
+
+
 customDirectives.controller("CustomDirectivesController", function($scope){
 
 $scope.collapseData = [
@@ -197,6 +206,15 @@ $scope.collapseData = [
     "statute":"Wendell H. Ford Aviation Investment and Reform Act for the 21st Century (AIR21)"
   		}
 	];
+
+$scope.collapseData.currentPage = 0;
+$scope.collapseData.pageSize = 5;
+$scope.collapseData.data = [];
+
+for (var i=0; i<20; i++){
+  $scope.collapseData.data.push("Item " + i);
+}
+
 }//end of function
 );//end of module definition
 
