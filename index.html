@@ -38,18 +38,29 @@
         line-height: 1.3;
         color: #808080;
     }
-    a, a:link, a:visited {
-        color: white;
-        text-decoration: none;
-    }
+
     a:hover, a:active { opacity: 0.7; }	
 
 	.panel {
 		border-width: 1px;
 	}
 	.panel-heading {
-		background-color: lightsteelblue !important;
+		background-color: steelblue !important;
 	}
+
+
+    a, a:link, a:visited {
+        /*color: blue;*/
+        text-decoration: none;
+    }
+
+    .panel-title {
+        color: white;
+    }
+
+    #graphic {
+        min-height: 365px;
+    }
 	</style>
 	
 	<meta charset="UTF-8">
@@ -57,19 +68,31 @@
 </head>
 
 
-<body ng-app="customDirectives" ng-controller="CustomDirectivesController">
-	<div ng-controller="CustomDirectivesController">
-		<div custom-collapse ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"=""></div>
-	
-	<button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage == 0" ng-click="collapseData.currentPage=collapseData.currentPage - 1" >
-        Previous
-    </button>
-    {{collapseData.currentPage + 1}}/5
-    <button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage >= collapseData.data.length/collapseData.pageSize" ng-click="collapseData.currentPage=collapseData.currentPage+1">
-        Next
-    </button>
-    {{pageSize}}
-	</div>
+<body>
+
+    <h1>Industries With Whistleblower Protection</h1>
+    <p>OSHA whistleblower protection doesn't apply to all workers, everywhere. There are 22 different statues that determine whether whistleblower protection applies and how a worker might make a complaint. Click the list items below for more info.</p>
+    <p>Workers can make a formal complaint by contacting their <a href="https://www.osha.gov/html/RAmap.html">regional OSHA office.</a></p>
+
+    <div id="graphic" ng-app="customDirectives">
+    	<div id="accordian" ng-controller="CustomDirectivesController">
+    		<div custom-collapse ng-model="collapseData" collapse-panel-id="collapse-panel" collapse-panel-body-id="collapse-panel-body"=""></div>
+    	
+    	<button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage == 0" ng-click="collapseData.currentPage=collapseData.currentPage - 1" >
+            Previous
+        </button>
+        {{collapseData.currentPage + 1}}/{{collapseData.data.length/collapseData.pageSize + 1}}
+        <button class="btn btn-sm btn-default" ng-disabled="collapseData.currentPage >= collapseData.data.length/collapseData.pageSize" ng-click="collapseData.currentPage=collapseData.currentPage+1">
+            Next
+        </button>
+        {{pageSize}}
+    	</div>
+    </div>
+
+    <div class="footer">
+        <p>Source: <a href="http://www.whistleblowers.gov/statutes_page.html">OSHA</a></p>
+        <p>Credit: <a href="http://www.twitter.com/scottpham">Scott Pham</a>, <a href="https://twitter.com/lizwags">Liz Wagner</a>/NBC Bay Area</p>
+    </div>
 	
 	
 	

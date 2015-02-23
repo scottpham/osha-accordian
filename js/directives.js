@@ -8,7 +8,7 @@ customDirectives.directive('customCollapse', function(){
 			ngModel: '='
 		},
 		restrict: 'A',
-		templateUrl: 'templates/panels2.html',
+		templateUrl: 'templates/panels.html',
 		link: function(scope, el, attrs){
 			scope.panelBaseId = attrs.collapsePanelBodyId;
 			scope.panelId = attrs.collapsePanelId;

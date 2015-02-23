@@ -1,14 +1,20 @@
-<div id="{{panelId}}" class="panel-group">
-	<div class="panel panel-default">
+<div class="panel-group" id="{{panelId}}">
+
+	<div class="panel panel-default" ng-repeat-start="item in ngModel | startFrom: ngModel.currentPage * ngModel.pageSize | limitTo: ngModel.pageSize">
+
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<!--The href of the data toggle a element must match the id of the div of class=panel-collapse-->
-				<a data-toggle="collapse" data-parent="#{{panelId}}" href="#{{panelBaseId}}-1">Panel Title 1</a>
-			</h4>
+				<a href="#{{panelBaseId}}-{{$index}}" ng-click="toggleCollapsedStates($index)">{{item.industry}}</a></h4>
+		</div>
+		<div id="{{panelBaseId}}-{{$index}}" data-parent="#{{panelId}}" class="panel-collapse collapse">
+			<div class="panel-body">{{item.description}}
+				<br/>
+				<a href="{{item.url}}" style="color: blue" target="_blank">See the statute.</a>
+			</div>
 		</div>
 
-	<div id="{{panelBaseId}}-1" class="panel-collapse collapse">
-		<div class="panel-body">Here is the body of the panel.</div>
 	</div>
-	</div>
+
+	<div ng-repeat-end>	</div>
+
 </div>
